@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content">
+    <h1>{{ u.username }}</h1>
+    <h2 class="text">Groups:</h2>
+    {% for gid in u.groups %}
+    <div class="group-box">
+        <h1>{{ gid }}</h1>
+        <ul>
+            {% for u in u.groups[gid].users %}
+                {{ u }},
+            {% endfor %}
+        </ul>
+        
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

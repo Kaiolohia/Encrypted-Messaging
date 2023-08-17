@@ -1,18 +1,16 @@
 import messaging
 import time
-from os import system
+import os
 from gradient_figlet import print_with_gradient_figlet
 
-print_with_gradient_figlet("E W O", "larry3d", )
+print_with_gradient_figlet("EWO'S", "graffiti", "#ff0000", "#4a4141")
 
 running = True
 u = messaging.User()
 
 def clear():
-    if name == 'nt':
-        _ = system('cls')
-    else:
-        _ = system('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print_with_gradient_figlet("EWO'S", "graffiti", "#ff0000", "#4a4141")
 
 def formatMessages(m:list):
     for i in reversed(m):
@@ -33,12 +31,14 @@ def inGroup():
 
 # Main loop
 while running:
+    clear()
     if not u.isLoggedIn():
         print("Welcome to encrypted messaging!")
         u_action = input("Login or Register?\n-> ").lower()
         if u_action == "login":
             attempting_login = True
             while attempting_login:
+                clear()
                 name = input("Please enter your username\n-> ")
                 password = input("Please enter your password\n-> ")
                 try:
@@ -78,9 +78,7 @@ while running:
             inGroup()
         elif u_action == "--logout":
             u.logout()
-            clear()
         else:
             clear()
             print("Invalid input, please try again!")
             time.sleep(2)
-            clear()
