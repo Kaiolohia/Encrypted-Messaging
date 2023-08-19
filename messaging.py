@@ -45,7 +45,11 @@ class py_json:
         
         """
         self.file_location = location
-        self.open()
+        try:
+            self.open()
+        except:
+            self.generateDB(location)
+            self.open()
 
     def open(self):
         """Load the json db"""
@@ -157,6 +161,30 @@ class py_json:
         if uids == []:
             raise Exception("One or more users not found")
         return uids
+    
+    def generateDB(self, location = "db.json"):
+        self.db = {
+            "users":{
+                "data": {
+                    "t_users": 0
+                }
+            },
+            "messages": {
+                "data": {
+                    "t_messages": 0
+                }
+            },
+            "groups": {
+                "data": {
+                    "t_groups": 0
+                }
+            }
+        }
+        newData = json.dumps(self.db, indent=4)
+        with open(location, "w") as f:
+            f.write(newData)
+        return
+
 
 class Group:
     def __init__(self, groupID, users = None):
@@ -187,7 +215,14 @@ class Group:
             raw_messages.append([m.author, m.message])
             return raw_messages
         
-pj = py_json("db.json")
+    def formatUsernames(self, user):
+        usernames = []
+        for u in self.users:
+            if u != user.uid:
+                usernames.append(pj.getUsernameByID(u))
+        return usernames
+        
+
 
 class User:    
     def __init__(self):
@@ -300,3 +335,9 @@ class User:
     def isLoggedIn(self):
         """Expose data of logged in status without the ability to change the status manually"""
         return self.__loggedIn__
+
+
+
+def initializeDB(file_path):
+    global pj
+    pj = py_json(file_path)

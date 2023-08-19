@@ -13,6 +13,19 @@
     {% for msg in get_flashed_messages() %}
     <p class="delay-hide">{{ msg }}</p>
     {% endfor %}
+    <div class="title">
+        <div class="ewo-text">
+            <pre style="font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">
+                <span class="r1">_____________      __________ /\       </span>
+                <span class="r2">\_   _____/  \    /  \_____  \</span><span class="r3">)</span><span class="r2">/ ______</span>
+                <span class="r4"> |    __</span><span class="r5">)</span><span class="r4">_\   \/\/   //   /\  \ /  ___/</span>
+                <span class="r6"> |         \        //    \/   \___ \ </span>
+                <span class="r7">/_______  / \__/\  / \_______  /____  &gt;</span>
+                <span class="r8">        \/       \/          \/     \/ </span>
+            </pre>
+        </div>
+    </div>
+    
     {% block content%} {% endblock %}
 </body>
 </html>

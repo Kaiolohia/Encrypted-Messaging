@@ -7,6 +7,7 @@ print_with_gradient_figlet("EWO'S", "graffiti", "#ff0000", "#4a4141")
 
 running = True
 u = messaging.User()
+messaging.initializeDB("db.json")
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -61,7 +62,7 @@ while running:
         print(f"Welcome {u.username}!")
         print(f"You have {len(u.groups)} groups avalible:")
         for g in u.groups:
-            print(f"   - {g}")
+            print(f"   - {g} | {', '.join(u.groups[g].formatUsernames(u))}")
         u_action = input("Would you like to create a group or select a group? C/S\nType --logout to logout\n-> ").lower()
         if u_action == "s":
             u.selectGroup(int(input(f"Select a group number.\n-> ")))

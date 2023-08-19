@@ -84,3 +84,30 @@ li, ul {
 .group-box {
     left: 25%;
 }
+
+
+/* following colors are for the gradient text */
+
+.r1 {color: #9600ff; text-decoration-color: #9600ff}
+.r2 {color: #a524ff; text-decoration-color: #a524ff}
+.r3 {color: #b449ff; text-decoration-color: #b449ff; font-weight: bold}
+.r4 {color: #c36dff; text-decoration-color: #c36dff}
+.r5 {color: #d292ff; text-decoration-color: #d292ff; font-weight: bold}
+.r6 {color: #e1b6ff; text-decoration-color: #e1b6ff}
+.r7 {color: #f0dbff; text-decoration-color: #f0dbff}
+.r8 {color: #ffffff; text-decoration-color: #ffffff}
+
+.ewo-text {
+    position: absolute;
+    width: 10em;
+    left: calc(50% - 30em);
+}
+
+span {
+    font-size: 2em;
+}
+
+.title {
+    height: 20em;
+    width: 100%;
+}

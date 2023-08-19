@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import messaging
 
+
+messaging.initializeDB("db.json")
 u = messaging.User()
 
 app = Flask(__name__)
@@ -43,4 +45,5 @@ def userPage(userid):
     
 @app.route('/user/<userid>/groups/<groupid>')
 def group(userid, groupid):
+    
     return render_template("base.html")
